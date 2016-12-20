@@ -30,6 +30,10 @@ msgstr ""
 msgid "Added"
 msgstr ""
 
+#: admin/meta-box-campaign-monitor.php:65
+msgid "Could not find Campaign Monitor lists."
+msgstr ""
+
 #: admin/taxonomy-edit-form-fields.php:12
 msgid "— Select List —"
 msgstr ""

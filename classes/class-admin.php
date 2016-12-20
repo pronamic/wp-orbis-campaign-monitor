@@ -156,7 +156,7 @@ class Orbis_CampaignMonitor_Admin {
 				array( $this, 'meta_box' ),
 				$post_type,
 				'normal',
-				'high'
+				'default'
 			);
 		}
 	}

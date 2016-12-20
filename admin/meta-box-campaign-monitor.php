@@ -59,4 +59,10 @@ $result = $wrap->get_lists_for_email( $contact->get_email() );
 		</tbody>
 	</table>
 
+<?php else : ?>
+
+	<p>
+		<?php esc_html_e( 'Could not find Campaign Monitor lists.', 'orbis-campaign-monitor' ); ?>
+	</p>
+
 <?php endif; ?>

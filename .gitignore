@@ -1,0 +1,17 @@
+# Bower
+/bower_components/
+
+# Composer
+/vendor/
+
+# Deploy
+/deploy/
+
+# Eclipse
+/.externalToolBuilders/
+/.settings/
+/.buildpath
+/.project
+
+# Node
+/node_modules/

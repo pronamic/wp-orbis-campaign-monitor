@@ -38,7 +38,11 @@ class Orbis_CampaignMonitor_Admin {
 		if ( filter_has_var( INPUT_POST, 'orbis_campaign_monitor_list_id' ) ) {
 			$list_id = filter_input( INPUT_POST, 'orbis_campaign_monitor_list_id', FILTER_SANITIZE_STRING );
 
-			update_term_meta( $term_id, 'orbis_campaign_monitor_list_id', $list_id );
+			if ( empty( $list_id ) ) {
+				delete_term_meta( $term_id, 'orbis_campaign_monitor_list_id' );
+			} else {
+				update_term_meta( $term_id, 'orbis_campaign_monitor_list_id', $list_id );
+			}
 		}
 	}
 
@@ -81,8 +85,6 @@ class Orbis_CampaignMonitor_Admin {
 				// @see https://github.com/campaignmonitor/createsend-php/blob/master/samples/subscriber/delete.php
 				$result = $wrap->delete( $contact->get_email() );
 
-				var_dump( $result );
-
 				return $result;
 		}
 	}
@@ -94,7 +96,6 @@ class Orbis_CampaignMonitor_Admin {
 	 */
 	public function added_term_relationship( $object_id, $tt_id, $taxonomy ) {
 		$this->update_person_list( $object_id, $tt_id, $taxonomy, 'add' );
-		exit;
 	}
 
 	/**
@@ -106,7 +107,6 @@ class Orbis_CampaignMonitor_Admin {
 		foreach ( $tt_ids as $tt_id ) {
 			$this->update_person_list( $object_id, $tt_id, $taxonomy, 'delete' );
 		}
-		exit;
 	}
 
 	/**

@@ -34,7 +34,7 @@
 		"classmap": ["classes/"]
 	},
 	"require": {
-
+		"campaignmonitor/createsend-php": "^5.0"
 	},
 	"require-dev": {
 		"squizlabs/php_codesniffer": "^2.7",

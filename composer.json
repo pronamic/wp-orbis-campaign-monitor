@@ -1,5 +1,5 @@
 {
-	"name": "orbis-campaign-monitor",
+	"name": "pronamic/wp-orbis-campaign-monitor",
 	"description": "The Orbis Campaign Monitor plugin connects your Orbis environment with Campaign Monitor.",
 	"version": "1.0.0",
 	"keywords": [
@@ -33,16 +33,21 @@
 	"autoload": {
 		"classmap": ["classes/"]
 	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"automattic/jetpack-autoloader": true
+		},
+		"wp-slug": "orbis-campaign-monitor"
+	},
 	"require": {
-		"campaignmonitor/createsend-php": "^5.0"
+		"campaignmonitor/createsend-php": "^7.0",
+		"automattic/jetpack-autoloader": "^3.0"
 	},
 	"require-dev": {
-		"squizlabs/php_codesniffer": "^2.7",
-		"wp-coding-standards/wpcs": "^0.10.0"
+		"pronamic/wp-coding-standards": "^2.1",
+		"pronamic/pronamic-cli": "^1.1"
 	},
 	"scripts": {
-		"post-autoload-dump": [
-			"if [[ -d vendor/wp-coding-standards/wpcs ]]; then vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs; fi"
-		]
 	}
 }

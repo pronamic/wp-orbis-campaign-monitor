@@ -2,6 +2,13 @@
 
 class Orbis_CampaignMonitor_Admin {
 	/**
+	 * Plugin.
+	 *
+	 * @var Orbis_CampaignMonitor_Plugin
+	 */
+	private $plugin;
+
+	/**
 	 * Construct.
 	 */
 	public function __construct( $plugin ) {

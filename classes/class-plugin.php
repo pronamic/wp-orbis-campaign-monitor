@@ -1,6 +1,13 @@
 <?php
 
 class Orbis_CampaignMonitor_Plugin extends Orbis_Plugin {
+	/**
+	 * Admin.
+	 *
+	 * @var Orbis_CampaignMonitor_Admin|null
+	 */
+	private $admin;
+
 	public function __construct( $file ) {
 		parent::__construct( $file );
 

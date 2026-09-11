@@ -19,7 +19,7 @@ host( 'orbis.pronamic.nl' )
 	->set( 'hostname', 'esm7.siteground.biz' )
 	->set( 'remote_user', 'u155-jlog1cramrrx' )
 	->set( 'port', 18765 )
-	->set( 'deploy_path', '~/projects/wp-orbis-campaign-monitor' )
+	->set( 'deploy_path', '~/projects/orbis-campaign-monitor' )
 	->set( 'plugins_dir', '~/www/orbis.pronamic.nl/public_html/wp-content/plugins' );
 
 /**

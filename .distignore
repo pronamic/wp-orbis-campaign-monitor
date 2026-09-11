@@ -19,6 +19,8 @@
 .phive
 .phpdoc
 
+.travis.yml
+
 phpdoc.dist.xml
 
 phpcs.xml.dist

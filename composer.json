@@ -1,7 +1,7 @@
 {
 	"name": "pronamic/wp-orbis-campaign-monitor",
 	"description": "The Orbis Campaign Monitor plugin connects your Orbis environment with Campaign Monitor.",
-	"version": "1.0.0",
+	"license": "GPL-2.0-or-later",
 	"keywords": [
 		"orbis",
 		"campaign-monitor",
@@ -46,8 +46,29 @@
 	},
 	"require-dev": {
 		"pronamic/wp-coding-standards": "^2.1",
-		"pronamic/pronamic-cli": "^1.1"
+		"wp-cli/dist-archive-command": "*",
+		"wp-cli/wp-cli-bundle": "*"
 	},
 	"scripts": {
+		"build": [
+			"rm -rf ./build/stage-1",
+			"rm -rf ./build/orbis-campaign-monitor",
+			"rsync --recursive --verbose --exclude-from=.distignore --exclude=/vendor/ ./ ./build/stage-1/",
+			"composer install --no-dev --prefer-dist --optimize-autoloader --working-dir=./build/stage-1/",
+			"rsync --recursive --verbose --exclude-from=.distignore ./build/stage-1/ ./build/orbis-campaign-monitor/",
+			"vendor/bin/wp i18n make-pot ./build/orbis-campaign-monitor/ --slug=orbis-campaign-monitor",
+			"vendor/bin/wp i18n make-mo ./build/orbis-campaign-monitor/languages/",
+			"vendor/bin/wp dist-archive ./build/orbis-campaign-monitor/ --plugin-dirname=orbis-campaign-monitor --force"
+		],
+		"dist-archive": "wp dist-archive . --plugin-dirname=orbis-campaign-monitor",
+		"make-pot": [
+			"@build",
+			"rsync --recursive --delete --verbose ./build/orbis-campaign-monitor/languages/ ./languages/",
+			"vendor/bin/wp i18n update-po ./languages/orbis-campaign-monitor.pot"
+		],
+		"phpcs": "vendor/bin/phpcs --standard=phpcs.ruleset.xml",
+		"qa": [
+			"@phpcs"
+		]
 	}
 }
